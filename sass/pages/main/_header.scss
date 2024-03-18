@@ -1,0 +1,264 @@
+
+// ---------------------------------------------------------------header---------------------------------------------------------------// ---------------------------------------------------------------Заголовок---------------------------------------------------------------
+.header{
+    position: relative;
+    border-bottom: 0.5px solid #ECECEC;
+}
+.header__container { 
+    // Мобильная
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: $desktop){ 
+    display: flex;
+    align-items: center; 
+    }
+} 
+.header__logo{  
+    // Мобильная   
+    margin: 16px 0px 14.5px 0px;
+
+    @media (min-width: $tablet) and (max-width: $desktop){
+    display: flex;
+    align-items:center;
+    }
+
+    @media (min-width: $desktop){
+    margin: 0px 91px 0px 0px;
+    padding: 20px 0px; 
+    }
+}
+
+// Кнопка меню для мобильной версии
+.header__menu{
+    display: inline-flex;
+    background: none;
+    border: none;
+    margin: 10px 0px 10px 0px; 
+    z-index: 2;
+
+    @media (min-width: $tablet){
+        pointer-events: none;
+        display: none; 
+    &-container{
+        pointer-events: none;
+        display: none;
+    }
+    }
+}
+.header__menu .header__menu-hide{
+    display: none;
+}
+.header__menu.is-open .header__menu-expand{
+    display: none;
+}
+.header__menu.is-open .header__menu-hide{
+    display: block;
+}
+
+// Окно меню для мобильной версии
+.header__menu-container{
+    display: none;
+    padding-left: 40px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,.04), 0px 2px 4px rgba(0,0,0,.08), 0px 1px 3px rgba(0,0,0,.16);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 796px;
+    background-color: $color-white;
+    z-index: 1;
+
+    &.is-open{
+        display: block;
+    }
+
+    @media (max-width: $mobile){
+        height: 100dvh;
+    }
+}
+
+// Стили ссылок внутри меню
+.header__menu-container .header__nav{
+    margin-top: 48px;
+    &-item{
+        font-size: $fs-40;
+        font-weight: 500;
+        line-height: $line-height-submain;
+    }
+    &-item:not(:last-child){
+        margin-bottom: 32px;
+    }
+    @media (max-width: 767.9px){
+        margin-bottom: 202px;
+    }
+}
+
+.header__menu-container .header__action{
+    margin-bottom: 36px;
+}
+
+.header__menu-container .header__contacts{
+    margin-bottom: 50px;
+    .contacts__link-tel{
+        display: inline-block;
+        font-size: $fs-34;
+        font-weight: 500;
+        color: $color-brand;
+        line-height: $line-height-submain;
+        margin-bottom: 32px;
+    }
+    .contacts__link-mail{
+        font-size: $fs-24;
+        font-weight: 500;
+        line-height: $line-height-submain;
+    }
+}
+.menu__social{
+    display: flex;
+    &-item:not(:first-child){
+        padding-left: 10.5px;
+        border-left: 1px solid rgba(33, 33, 33, 0.2) ;
+    }
+    &-item:not(:last-child){
+        padding-right: 10.5px;
+    }
+
+    &-link{
+        font-size: $fs-18;
+        font-weight: 500;
+        line-height: 1.22;
+        color: $color-brand;
+    } 
+}
+
+.header__nav {
+    font-weight: $font-weight-subtitle;
+    line-height:$line-height-submain;
+
+    &-item{
+        transition: $animation;
+    }
+
+    &-item:hover, &-item:focus{
+        color: $color-brand;
+    }
+
+    @media (max-width: 767.9px){
+    &-mapping{
+    opacity: 0; 
+    position: absolute;
+    pointer-events: none;
+    }
+    }
+
+    @media (min-width: $tablet){
+    &-mapping{
+        opacity: 100; 
+    }
+    }
+
+    @media (min-width: $tablet) and (max-width: $desktop){
+    display: flex;
+    gap: 50px;
+    
+    &-item{
+        padding: 21px 0px 21px 0px;
+        display: flex;
+        align-items:center;      
+    }
+    }
+    @media (min-width: $desktop){
+        display: flex;
+    gap: 50px;
+    &-item{
+        padding: 27px 0px 27px 0px;
+    }
+    }
+}
+.header__nav .link{
+    @media (min-width: $desktop){
+    display: block;
+    }
+}
+
+.header__contacts {
+
+    @media (max-width: 767.9px){
+    & .contacts__icon{
+        display: none;
+    }
+    }
+
+    @media (min-width: $tablet) and (max-width: $desktop){
+    padding-top: 21px;
+    padding-bottom: 20.5px;
+    }
+
+    @media (min-width: $desktop){
+    display: flex;
+    margin-left: auto;
+    gap: 50px;
+    }
+}
+.mail{
+    @media (min-width: $desktop){
+    display: block;
+    width: 16px; 
+    height: 12px;
+    }
+}
+.contacts__item{
+
+    @media (min-width: $tablet) and (max-width: 1199.9px){
+    &:not(:first-child){
+        margin-top: 10px;
+    }
+    }
+}
+.contacts__link {
+    fill: $color-subtitle;
+    color: $color-subtitle;
+
+    font-weight: $font-weight-subtitle;
+    line-height:$line-height-submain;
+
+    transition: $animation;
+
+    &:hover, &:focus{
+        fill: $color-brand;
+        color: $color-brand;
+    }
+
+    @media (min-width: $tablet){
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+    }
+}
+.contacts__icon {
+    @media (min-width: $tablet){
+    width: 16px;
+    height: 12px;
+    }
+}
+.header__action { 
+    color: $color-brand;
+
+    @media (min-width: $tablet){
+        position: relative;
+        &::after{
+            content: "";
+            left: 0;
+            bottom: -0.5px;
+            display: block;
+            border-bottom: 4px solid $color-brand;
+            border-radius: 2px;
+            width: 100%;
+            position: absolute;
+        }
+    }
+
+}
